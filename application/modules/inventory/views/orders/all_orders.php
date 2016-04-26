@@ -1,6 +1,6 @@
 <?php 
 	$v_data['order_status_query'] = $order_status_query;
-	echo $this->load->view('inventory/search/search_orders', '' , TRUE); ?>
+	//echo $this->load->view('inventory/search/search_orders', '' , TRUE); ?>
 <section class="panel panel-featured panel-featured-info">
     <header class="panel-heading">
          <h2 class="panel-title pull-left"><?php echo $title;?></h2>

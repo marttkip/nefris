@@ -90,12 +90,7 @@ else
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_default_1">
-                                  
-                                    <?php 
-									
-									echo form_open('inventory/add-product', array("class" => "form-horizontal", "role" => "form"));
-									?>
-                                        <div class="row">
+                                	<div class="row">
                                             <div class="col-md-12 ">
                                                   <div class="form-group">
                                                     <label class="col-lg-4 control-label">Product Category <span class="required">*</span></label>
@@ -125,8 +120,10 @@ else
                                                 </div> 
                                             </div>
                                        </div> 
-                                       <br>
+                                    
                                      	<div class="row display_none" id="drug_div">
+											<?php echo form_open('inventory/add-product', array("class" => "form-horizontal", "role" => "form"));?>
+                                        	<input type="hidden" id="category_id_1" name="category_id" />
                                         	<div class="col-md-6">
                                                 
                                                 <!-- product Name -->
@@ -342,12 +339,33 @@ else
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
-                                               
                                             </div>
+                                            
+											<div class="row">
+												<div class="col-md-12">
+													<!-- Product Description -->
+													<div class="form-group">
+													  <label class="col-lg-2 control-label">Product Description <span class="required">*</span></label>
+													  <div class="col-lg-10">
+														<textarea name="product_description" class="cleditor form-control"><?php echo $product_description;?></textarea>
+													  </div>
+													</div>
+												</div>
+											</div>
+											<br/>
+											<div class="row">   
+												<div class="form-actions center-align">
+													<button class="submit btn btn-primary" type="submit">
+														Update product
+													</button>
+												</div>
+											</div>
+											<?php echo form_close();?>
                                         </div>
                                         <br>
                                         <div class="row display_none" id="product_div">
+											<?php echo form_open('inventory/add-product', array("class" => "form-horizontal", "role" => "form"));?>
+                                        	<input type="hidden" id="category_id_2" name="category_id" />
                                             <div class="col-md-6">
                                                 
                                                 <!-- product Name -->
@@ -446,32 +464,30 @@ else
                                                         <input type="text" class="form-control" name="reorder_level" placeholder="Reorder Level" value="<?php echo $reorder_level;?>">
                                                     </div>
                                                 </div>
-                                                
-                                               
-                                               
                                             </div>
+											<?php echo form_close();?>
+                                            
+											<div class="row">
+												<div class="col-md-12">
+													<!-- Product Description -->
+													<div class="form-group">
+													  <label class="col-lg-2 control-label">Product Description <span class="required">*</span></label>
+													  <div class="col-lg-10">
+														<textarea name="product_description" class="cleditor form-control"><?php echo $product_description;?></textarea>
+													  </div>
+													</div>
+												</div>
+											</div>
+											<br>
+											<div class="row">   
+												<div class="form-actions center-align">
+													<button class="submit btn btn-primary" type="submit">
+														Update product
+													</button>
+												</div>
+											</div>
                                         </div>
                                             
-                                        <div class="row">
-                                        	<div class="col-md-12">
-                                                <!-- Product Description -->
-                                                <div class="form-group">
-                                                  <label class="col-lg-2 control-label">Product Description <span class="required">*</span></label>
-                                                  <div class="col-lg-10">
-                                                    <textarea name="product_description" class="form-control"><?php echo $product_description;?></textarea>
-                                                  </div>
-                                                </div>
-                                        	</div>
-                                        </div>
-                                        <br>
-                                         <div class="row">   
-                                            <div class="form-actions center-align">
-                                                <button class="submit btn btn-primary" type="submit">
-                                                    Update product
-                                                </button>
-                                            </div>
-                                        </div>
-                                            <?php echo form_close();?>
                                     
                                 </div>
                               
@@ -482,8 +498,6 @@ else
             </div>
 		</div>
     </section>
-<script src="<?php echo base_url().'assets/themes/tinymce/js/';?>tinymce.min.js"></script>
-<script>tinymce.init({selector:'textarea'});</script>
 <script type="text/javascript">
     function check_department_type()
     {
@@ -491,6 +505,8 @@ else
         var myTarget2 = document.getElementById("drug_div");
         var myTarget3 = document.getElementById("product_div");
         var category_id = myTarget;
+		$("#category_id_1").val(myTarget);
+		$("#category_id_2").val(myTarget);
         // alert(category_id);
         if(category_id ==2)
         {
@@ -522,6 +538,7 @@ else
         else if(id == 3)
         {
           myTarget1.style.display = 'none';
+
           myTarget2.style.display = 'block';
         }
         else

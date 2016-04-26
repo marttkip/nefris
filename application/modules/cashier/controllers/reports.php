@@ -94,7 +94,7 @@ class Reports extends MX_Controller
 		{
 			$segment = 5;	
 		}
-		
+		//echo $where; die();
 		//pagination
 		$this->load->library('pagination');
 		$config['base_url'] = site_url().'administration/reports/all_transactions/'.$module;
@@ -268,13 +268,13 @@ class Reports extends MX_Controller
 			}
 		}
 		
-		$search = $visit_date.$prev_search;
-		$visit_search = $this->session->userdata('all_transactions_search');
+		$search = $visit_date;
+		/*$visit_search = $this->session->userdata('all_transactions_search');
 		
 		if(!empty($visit_search))
 		{
 			$search .= $visit_search;
-		}
+		}*/
 		$this->session->set_userdata('all_transactions_search', $search);
 		$this->session->set_userdata('search_title', $search_title);
 		
